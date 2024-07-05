@@ -1,22 +1,22 @@
 import { View, Text, Image, StyleSheet, } from 'react-native'
 import React from 'react'
-import { loginbg } from '../../assets/images/loginbg.png';
+import loginbg from '../../assets/loginbg.png';
 import { client } from '../../utils/KindeConfig';
-import Colors from '@/constants/Colors';
+import Colors from '../../utils/Colors';
 import { TouchableOpacity } from 'react-native';;
 import services from '../../utils/services'
 import { useRouter } from 'expo-router';
-
+import Auth from '../../components/Auth';
 
 export default function LoginScreen() {
   const router = useRouter();
 
-  const handleSignIn = async () => {
-    const token = await client.login(); // Modify this to get the token after authentication
-        if (token) {
-          await services.storeData('login', 'true');
-          router.replace('/');
-  };
+  // const handleSignIn = async () => {
+  //   const token = await client.login(); // Modify this to get the token after authentication
+  //       if (token) {
+  //         await services.storeData('login', 'true');
+  //         router.replace('/');
+  // };
   return (
     <View style={{
       display:'flex',
@@ -25,7 +25,7 @@ export default function LoginScreen() {
       <Image source={loginbg}
       style={styles.bgImage}/>
       <View style={{
-        backgroundColor:Colors.primary,
+        backgroundColor:Colors.PRIMARY,
         width: '100%',
         height:'100%',
         borderTopLeftRadius:30,
@@ -37,24 +37,24 @@ export default function LoginScreen() {
       <Text style={{
         fontSize:43,
         fontWeight:'bold',
-        color:Colors.white,
+        color:Colors.WHITE,
         textAlign:"center"
       }}>Smart Budget Planner</Text>
 
       <Text style={{
-        color:Colors.white,
+        color:Colors.WHITE,
         fontSize:20,
         textAlign:'center',
         marginTop:20
       }}>Stay on Track, Event by Event: Your Smart Budget Planner App!</Text>
 
-      <TouchableOpacity style={styles.button} onPress={handleSignIn}>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('/(tabs)')}>
         <Text style={{
-          color:Colors.primary,
+          color:Colors.PRIMARY,
           textAlign: 'center', 
         }}>Login/Signup</Text>
       </TouchableOpacity>
-      <Text style={{fontSize:15, color:Colors.white, marginTop:10}}>* By login/signup you will agree to our terms and conitions</Text>
+      <Text style={{fontSize:15, color:Colors.WHITE, marginTop:10}}>* By login/signup you will agree to our terms and conitions</Text>
     </View>
     </View>
     
@@ -68,15 +68,14 @@ const styles=StyleSheet.create({
     marginTop:50,
     borderWidth:5,
     borderRadius:20,
-    borderColor:Colors.black
+    borderColor:Colors.BLACK
   },
   button:{
-    backgroundColor:Colors.white,
+    backgroundColor:Colors.WHITE,
     marginTop:30,
     paddingHorizontal:5,
     padding:15,
     borderRadius:99
   }
 })
-}
 
