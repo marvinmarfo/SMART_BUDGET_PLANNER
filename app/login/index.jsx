@@ -6,17 +6,25 @@ import Colors from '../../utils/Colors';
 import { TouchableOpacity } from 'react-native';;
 import services from '../../utils/services'
 import { useRouter } from 'expo-router';
+import * as WebBrowser from 'expo-web-browser';
 import Auth from '../../components/Auth';
 
 export default function LoginScreen() {
   const router = useRouter();
 
-  // const handleSignIn = async () => {
-  //   const token = await client.login(); // Modify this to get the token after authentication
-  //       if (token) {
-  //         await services.storeData('login', 'true');
-  //         router.replace('/');
-  // };
+const handleSignUp = async () => {
+  const token = await client.register();
+  if (token) {
+    // User was authenticated
+  }
+};
+
+const handleSignIn = async () => {
+  const token = await client.login();
+  if (token) {
+    // User was authenticated
+  }
+};
   return (
     <View style={{
       display:'flex',
@@ -48,7 +56,7 @@ export default function LoginScreen() {
         marginTop:20
       }}>Stay on Track, Event by Event: Your Smart Budget Planner App!</Text>
 
-      <TouchableOpacity style={styles.button} onPress={() => router.push('/(tabs)')}>
+      <TouchableOpacity style={styles.button} onPress={handleSignIn}>
         <Text style={{
           color:Colors.PRIMARY,
           textAlign: 'center', 

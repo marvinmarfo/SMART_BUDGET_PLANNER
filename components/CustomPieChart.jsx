@@ -33,7 +33,7 @@ export default function CustomPieChart() {
 
 const styles = StyleSheet.create({
   container:{
-    marginTop:80,
+    marginTop:50,
     backgroundColor:Colors.WHITE,
     padding:20,
     borderRadius:15,
