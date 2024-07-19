@@ -1,4 +1,4 @@
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native'
 import React, { useState } from 'react'
 import Colors from '../utils/Colors'
 import ColorPicker from '../components/ColorPicker'
@@ -17,8 +17,10 @@ export default function AddNewCategory() {
     const [selectedColor,setSelectedColor]=useState(Colors.PRIMARY)
     const [categoryName,setCategoryName]=useState();
     const [totalBudget,setTotalBudget]=useState();
+    const [loading,setLoading]=useState(false);
 
     const onCreateCategory=async()=>{
+      setLoading(true)
       const user=await client.getUserDetails();
       const {data,error}=await supabase.from('Category')
       .insert([{
@@ -37,15 +39,19 @@ export default function AddNewCategory() {
             categoryId:data[0].id
           }
         })
+        setLoading(false)
         // Add a Toast on screen.
           let toast = Toast.show('Category Created!', {
-            duration: Toast.durations.LONG,
+            duration: Toast.durations.SHORT,
           });
 
           // You can manually hide the Toast, or it will automatically disappear after a `duration` ms timeout.
           setTimeout(function hideToast() {
             Toast.hide(toast);
           }, 500);
+          if(error){
+            setLoading(false)
+          }
       }
     }
   return (
@@ -78,8 +84,11 @@ export default function AddNewCategory() {
       </View>
 
       <TouchableOpacity style={styles.button}
-        disabled={!categoryName||!totalBudget} onPress={()=>onCreateCategory()}>
-            <Text style={{textAlign:'center', fontSize:18, color:Colors.WHITE}}>Create</Text>
+        disabled={!categoryName||!totalBudget||loading} onPress={()=>onCreateCategory()}>
+          {loading?
+            <ActivityIndicator/>
+          :
+            <Text style={{textAlign:'center', fontSize:18, color:Colors.WHITE}}>Create</Text>}
       </TouchableOpacity>
 
     </View>

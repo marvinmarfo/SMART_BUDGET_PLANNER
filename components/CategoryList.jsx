@@ -15,6 +15,14 @@ export default function CategoryList({categoryList}) {
             }
         })
     }
+
+    const calculateTotalCost=(CategoryItems)=>{
+        let totalCost=0;
+        CategoryItems.forEach(item => {
+            totalCost=totalCost+item.cost
+        })
+        return totalCost;
+    }
   return (
     <View style={{marginTop:20}}>
       <Text style={{
@@ -44,7 +52,7 @@ export default function CategoryList({categoryList}) {
                         fontWeight:'bold',
                         fontSize:'17',
                         fontFamily:'outfit'
-                    }}>₵4322</Text>
+                    }}>₵{calculateTotalCost(category?.CategoryItems)}</Text>
                 </View>
                 </TouchableOpacity>
         ))}
@@ -70,6 +78,7 @@ const styles=StyleSheet.create({
         alignItems:'baseline'
     },
     iconText:{
+        overflow: 'hidden',
         fontSize:30,
         padding:16,
         borderRadius:15,

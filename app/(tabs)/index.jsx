@@ -64,7 +64,7 @@ export default function Home() {
               padding:20,
               marginTop:-145
              }}>
-          <CustomPieChart />
+          <CustomPieChart categoryList={categoryList}/>
           <CategoryList categoryList={categoryList}/>
         </View>
 

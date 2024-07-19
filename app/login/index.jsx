@@ -23,6 +23,9 @@ const handleSignIn = async () => {
   const token = await client.login();
   if (token) {
     // User was authenticated
+       await services.storeData('login','true');
+      //  console.log(token);
+       router.replace('/')
   }
 };
   return (
