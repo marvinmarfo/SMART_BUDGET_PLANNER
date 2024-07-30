@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, } from 'react-native'
+import { View, Text, Image, StyleSheet, ImageBackground, } from 'react-native'
 import React from 'react'
 import loginbg from '../../assets/loginbg.png';
 import { client } from '../../utils/KindeConfig';
@@ -6,6 +6,8 @@ import Colors from '../../utils/Colors';
 import { TouchableOpacity } from 'react-native';;
 import services from '../../utils/services'
 import { useRouter } from 'expo-router';
+import appbg from '../../assets/appbg.jpg';
+
 import * as WebBrowser from 'expo-web-browser';
 import Auth from '../../components/Auth';
 
@@ -33,8 +35,12 @@ const handleSignIn = async () => {
       display:'flex',
       alignItems:'center'
     }}>
+      
+      <ImageBackground source={appbg} style={styles.bg} resizeMode='stretch'>
       <Image source={loginbg}
       style={styles.bgImage}/>
+      </ImageBackground>
+      
       <View style={{
         backgroundColor:Colors.PRIMARY,
         width: '100%',
@@ -73,13 +79,19 @@ const handleSignIn = async () => {
 }
 
 const styles=StyleSheet.create({
+  bg:{
+    width:'100%'
+  },
   bgImage:{
     width:200,
-    height:450,
+    height:460,
     marginTop:50,
     borderWidth:5,
     borderRadius:20,
-    borderColor:Colors.BLACK
+    borderColor:Colors.BLACK,
+    marginLeft:100,
+    bottom:-7
+  
   },
   button:{
     backgroundColor:Colors.WHITE,

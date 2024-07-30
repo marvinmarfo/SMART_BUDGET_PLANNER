@@ -23,10 +23,10 @@ export default function Home() {
 
     // used to check if user is already authorised or not
     const checkUserAuth=async()=>{
-        const result=await services.getData('login');
+        const result=await services.getData(v);
         if(result!=='true')
             {
-                router.replace('/')
+                router.replace('/login')
             }
     }
   const getCategoryList=async()=>{

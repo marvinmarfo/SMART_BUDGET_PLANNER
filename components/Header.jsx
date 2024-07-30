@@ -40,7 +40,7 @@ export default function Header() {
           <Text style={{color:Colors.WHITE, fontSize:25, fontWeight:'bold'}}>{user?.given_name}</Text>
         </View>
         <View>
-        <Ionicons name="notifications" size={24} color="#fff" />
+        {/* <Ionicons name="notifications" size={24} color="#fff" /> */}
         </View>
       </View>
     </View>

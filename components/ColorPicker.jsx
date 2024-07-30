@@ -8,8 +8,10 @@ export default function ColorPicker({selectedColor, setSelectedColor}) {
         display:'flex',
         flexDirection:'row',
         gap:20,
+        alignContent:'center',
         marginTop:35,
-        marginLeft:30
+        // marginLeft:30
+        flexWrap:'wrap'
     }}>
         {Colors.COLOR_LIST.map((color,index)=>(
             <TouchableOpacity

@@ -16,6 +16,8 @@ const storeData = async (key, value) => {
         // value previously stored
       }
     } catch (error) {
+      // handle rejection
+      console.log(error)
       // error reading value
     }
   };

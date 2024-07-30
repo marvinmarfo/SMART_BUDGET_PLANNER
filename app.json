@@ -2,7 +2,7 @@
   "expo": {
     "name": "SMART_BUDGET_PLANNER",
     "slug": "SMART_BUDGET_PLANNER",
-    "scheme": "SMART_BUDGET_PLANNER_SCHEME",
+    "scheme": "SMART_BUDGET_PLANNER-scheme",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

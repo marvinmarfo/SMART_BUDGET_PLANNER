@@ -5,7 +5,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons'
 import { SimpleLineIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
-import { decode } from 'base64-arraybuffer';
+import { encode, decode } from 'base64-arraybuffer';
 import { supabase } from '../utils/SupabaseConfig';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import Toast from 'react-native-root-toast';
